@@ -1,33 +1,26 @@
-/* eslint-disable react/no-unescaped-entities */
+import { Link } from "react-router-dom";
 
 function Content() {
     return (
-        <div>
-            <div className="flex  flex-col  w-[80%] min-h-screen mx-auto mt-10 ">
-                <h1 className="text-[30px]  ml-20 text-gray-500 mt-8">Find Yourself some network</h1>
-                <h2 className="leading-none text-[200px] ml-20 text-[#6d0333] font-semibold  ">CONNECT</h2>
-                <div className="flex flex-row ml-20">
-                    <div className="flex-1  h-60">
-                        <a href="#"
-                            className="no-underline bg-[#6d0333] text-white px-8 "
-                        >
-                            show all alumni
-                        </a>
-                    </div>
-                    <div className="flex-1 ">
-                        <p>
-                            start <span className="text-pink-500">hunting</span> for job 
-                            from us
-                        </p>
-                        <br />
-                        <p>
-                            Join a vibrant community where alumni come together to network, share insights, and support each other's professional journeys. Discover exclusive job postings, mentorship opportunities, and stay updated on the latest news and events from your alma mater.
-                        </p>
-                    </div>
+        <div
+            className="hero min-h-screen"
+            style={{
+                backgroundImage: "url(src/assets/images/circle-3041437_1920.jpg)",
+            }}>
+            <div className="hero-overlay bg-opacity-50"></div>
+            <div className="hero-content text-neutral-content text-justify">
+                <div className="max-w-md">
+                    <h1 className="mb-5 text-5xl font-extrabold">Hello there</h1>
+                    <h3 className="mb-10 text-yellow-400 font-extrabold">
+                        Logbookd is a dynamic and interactive alumni engagement platform designed to bridge the gap between current students and alumni. This platform empowers alumni to create detailed profiles showcasing their achievements, skills, and professional journey, fostering a rich network of connections and opportunities.
+                    </h3>
+                    <Link className="btn btn-primary"
+                    to="/signin"
+                    >Get Started
+                    </Link>
                 </div>
             </div>
         </div>
-
 
     )
 }

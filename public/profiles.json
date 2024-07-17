@@ -1,0 +1,13 @@
+[{
+    "image": "/src/assets/images/pexels-fabiano-rodrigues-1662298.jpg",
+    "name": "John Doe",
+    "batchYear": "2020",
+    "domain": "JavaScript, Python, Web Development",
+    "achievements": "Cleared gsoc",
+    "industry": "Tech Industry",
+    "github": "https://github.com/johndoe",
+    "linkedin": "https://www.linkedin.com/in/johndoe/",
+
+    "about": "Passionate software developer with expertise in front-end and back-end technologies."
+  }
+  ]

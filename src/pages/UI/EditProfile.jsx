@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const CreateProfile = () => {
+const EditProfile = () => {
   const [formData, setFormData] = useState({
     image: null,
     name: '',
@@ -191,4 +191,4 @@ const CreateProfile = () => {
   );
 };
 
-export default CreateProfile;
+export default EditProfile;

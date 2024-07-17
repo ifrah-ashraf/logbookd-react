@@ -1,25 +1,31 @@
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-function Navbar (){
-    return(
-        <div className="flex justify-between items-center p-3 bg-gray-200">
-        <h1 className="text-xl ml-8 font-bold text-logoColor "> LOGBOOKD</h1>
-        <nav>
-            <ul className="flex gap-6 items-center">
-                <Link
-                 to="/signin"
-                >
-                    SignIn
+function Navbar() {
+    return (
+        <div className="navbar  bg-white dark:bg-gray-800 text-black dark:text-white">
+            <div className="flex-1">
+                <Link 
+                to="/"
+                className="btn btn-ghost text-xl">
+                LogBookd
                 </Link>
-                <Link
-                to="/check"
-                >
-                Check
-                </Link>
-            </ul>
-        </nav>
-        
-    </div>)
+            </div>
+            <div className="flex-none">
+                <ul className="menu menu-horizontal px-1">
+                    <li className='text-lg font-semibold btn btn-ghost hover:bg-gray-200 dark:hover:bg-gray-700'><Link
+                        to="signin"
+                    >SignIn
+                    </Link>
+                    </li>
+                    <li className='text-lg font-semibold btn btn-ghost hover:bg-gray-200 dark:hover:bg-gray-700'>
+                        <Link
+                        to="check"
+                    >check</Link></li>
+                </ul>
+            </div>
+        </div>
+
+    )
 }
 
 export default Navbar;

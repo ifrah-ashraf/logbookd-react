@@ -3,7 +3,8 @@ import Home from "./pages/Home";
 import Signin from "./pages/Signin";
 import './index.css';
 import Check from "./pages/UI/Check";
-import CreateProfile from "./pages/UI/CreateProfile";
+
+import EditProfile from "./pages/UI/EditProfile";
 
 
 
@@ -14,7 +15,7 @@ function App() {
             <Route path="/" element={<Home/>} />
             <Route path="/signin" element={<Signin/>} />
             <Route path="/check" element={<Check/>}></Route>
-            <Route path ="/CreateProfile" element={<CreateProfile/>}></Route>
+            <Route path ="/editprofile" element={<EditProfile/>}></Route>
         </Routes>
     </Router>
     )
