@@ -1,13 +1,35 @@
-[{
+[
+  {
     "image": "/src/assets/images/pexels-fabiano-rodrigues-1662298.jpg",
     "name": "John Doe",
     "batchYear": "2020",
     "domain": "JavaScript, Python, Web Development",
-    "achievements": "Cleared gsoc",
+    "achievements": "Cleared GSoC",
     "industry": "Tech Industry",
     "github": "https://github.com/johndoe",
     "linkedin": "https://www.linkedin.com/in/johndoe/",
-
     "about": "Passionate software developer with expertise in front-end and back-end technologies."
+  },
+  {
+    "image": "src/assets/images/circle-3041437_1920.jpg",
+    "name": "Jane Doe",
+    "batchYear": "2021",
+    "domain": "Data Science, Machine Learning",
+    "achievements": "Published research paper",
+    "industry": "Data Analytics",
+    "github": "https://github.com/janedoe",
+    "linkedin": "https://www.linkedin.com/in/janedoe/",
+    "about": "Data scientist with a knack for deriving insights from complex datasets."
+  },
+  {
+    "image": "/src/assets/images/pexels-mark-smith-1662300.jpg",
+    "name": "Mark Smith",
+    "batchYear": "2019",
+    "domain": "Mobile Development, Flutter",
+    "achievements": "Won hackathon",
+    "industry": "Mobile Apps",
+    "github": "https://github.com/marksmith",
+    "linkedin": "https://www.linkedin.com/in/marksmith/",
+    "about": "Enthusiastic mobile developer focused on creating user-friendly applications."
   }
-  ]
+]

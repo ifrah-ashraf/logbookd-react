@@ -10,9 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.44.4",
     "@web3auth/base": "^8.8.0",
     "@web3auth/ethereum-provider": "^8.10.2",
     "@web3auth/modal": "^8.10.2",
+    "dotenv": "^16.4.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.24.1"

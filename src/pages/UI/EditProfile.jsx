@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
+import { supabase } from '../../SupabaseClient'; // Adjust path as necessary
 
 const EditProfile = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     image: null,
     name: '',
@@ -14,6 +17,44 @@ const EditProfile = () => {
     about: ''
   });
   const [imagePreview, setImagePreview] = useState(null);
+
+  useEffect(() => {
+    // Function to fetch existing user data from Supabase and pre-fill the form
+    const fetchUserData = async () => {
+      try {
+        const { data, error } = await supabase.from('users').select('*').single(); // Adjust query as per your needs
+
+        if (data) {
+          setFormData({
+            image: data.profile_image || null,
+            name: data.name || '',
+            college: data.college_name || '',
+            yearOfPassout: data.year_of_passout || '',
+            achievements: data.achievements || '',
+            techSkills: data.tech_skills ? data.tech_skills.join(', ') : '', // Convert array to comma-separated string
+            github: data.github_profile || '',
+            linkedin: data.linkedin_profile || '',
+            industry: data.industry || '',
+            about: data.bio || ''
+          });
+
+          if (data.profile_image) {
+            // Optionally, set image preview if available
+            setImagePreview(data.profile_image);
+          }
+        }
+
+        if (error) {
+          throw error;
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error.message);
+        // Handle error fetching user data
+      }
+    };
+
+    fetchUserData();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -36,11 +77,60 @@ const EditProfile = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log(formData);
+
+    // Split the techSkills input into an array of skills
+    const skillsArray = formData.techSkills.split(',').map(skill => skill.trim()).filter(skill => skill);
+    
+    // Prepare data to be stored in Supabase
+    const userData = {
+      profile_image: formData.image ? formData.image.name : null,
+      name: formData.name,
+      college_name: formData.college,
+      year_of_passout: formData.yearOfPassout,
+      achievements: formData.achievements,
+      tech_skills: skillsArray, // Store techSkills as array
+      github_profile: formData.github,
+      linkedin_profile: formData.linkedin,
+      industry: formData.industry,
+      bio: formData.about
+    };
+
+    try {
+      // Insert the user data into the 'users' table in Supabase
+      const { data, error } = await supabase.from('users').upsert(userData); // Use upsert to insert or update
+
+      if (error) {
+        throw error;
+      }
+
+      console.log('User data inserted/updated successfully:', data);
+
+      // Reset the form after successful submission
+      setFormData({
+        image: null,
+        name: '',
+        college: '',
+        yearOfPassout: '',
+        achievements: '',
+        techSkills: '',
+        github: '',
+        linkedin: '',
+        industry: '',
+        about: ''
+      });
+      setImagePreview(null);
+
+      // Redirect to /check after successful submission
+      navigate('/check');
+    } catch (error) {
+      console.error('Error inserting/updating user data:', error.message);
+      // Handle error gracefully (e.g., show error message to the user)
+      // Example: set an error state and display a message to the user
+    }
   };
+
 
   return (
     <form onSubmit={handleSubmit} className="max-w-4xl mx-auto p-6 space-y-4 bg-white rounded-lg shadow-lg">
@@ -77,6 +167,7 @@ const EditProfile = () => {
           value={formData.name}
           onChange={handleChange}
           className="input input-bordered"
+          placeholder='Enter your name'
         />
       </div>
       <div className="form-control">
@@ -90,6 +181,7 @@ const EditProfile = () => {
           value={formData.college}
           onChange={handleChange}
           className="input input-bordered"
+          placeholder='Enter your college name'
           required
         />
       </div>
@@ -116,6 +208,7 @@ const EditProfile = () => {
           value={formData.achievements}
           onChange={handleChange}
           className="textarea textarea-bordered"
+          placeholder='Enter your achievements seprated by comma'
         ></textarea>
       </div>
       <div className="form-control">
@@ -129,6 +222,7 @@ const EditProfile = () => {
           value={formData.techSkills}
           onChange={handleChange}
           className="input input-bordered"
+          placeholder='Add your skills seprated by comma'
         />
       </div>
       <div className="form-control">
@@ -142,6 +236,7 @@ const EditProfile = () => {
           value={formData.github}
           onChange={handleChange}
           className="input input-bordered"
+          placeholder='enter the github URL'
         />
       </div>
       <div className="form-control">
@@ -155,6 +250,7 @@ const EditProfile = () => {
           value={formData.linkedin}
           onChange={handleChange}
           className="input input-bordered"
+          placeholder='Enter the linkedin URL'
         />
       </div>
       <div className="form-control">
@@ -168,6 +264,7 @@ const EditProfile = () => {
           value={formData.industry}
           onChange={handleChange}
           className="input input-bordered"
+          placeholder='Enter the industry currently working in'
         />
       </div>
       <div className="form-control">
@@ -180,6 +277,7 @@ const EditProfile = () => {
           value={formData.about}
           onChange={handleChange}
           className="textarea textarea-bordered"
+          placeholder='Describe about yourself'
         ></textarea>
       </div>
       <div className="form-control">
