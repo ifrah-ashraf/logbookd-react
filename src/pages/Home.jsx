@@ -7,8 +7,7 @@ function Home(){
         <>
         <Navbar/>
         <Content/>
-        
-        </>
+    </>
     )
 }
 

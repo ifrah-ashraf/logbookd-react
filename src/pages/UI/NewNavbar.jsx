@@ -1,16 +1,6 @@
-import { Link, useNavigate } from "react-router-dom"
-import { supabase } from "../../SupabaseClient"
-import { useState } from "react"
-
+import { Link, } from "react-router-dom"
 
 function NewNavbar() {
-    
-
-    const navigate = useNavigate()
-    const logout = async() => {
-        await supabase.auth.signOut()
-        navigate("/")
-    }
 
 
     return (
@@ -57,7 +47,7 @@ function NewNavbar() {
                             </Link>
                         </li>
                         <li className="text-black"><a>Settings</a></li>
-                        <li onClick={logout} className="text-black"><a>Logout</a></li>
+                        <li  className="text-black"><a>Logout</a></li>
                     </ul>
                 </div>
             </div>
