@@ -14,6 +14,9 @@ function Navbar() {
         <Link to="/" className="btn btn-ghost text-xl">
           LogBookd
         </Link>
+        <Link to="/editprofile" className="btn btn-ghost text-xl"> 
+          Edit Profile
+        </Link>
       </div>
       <div className="flex-none">
         <ul className="menu menu-horizontal px-1">

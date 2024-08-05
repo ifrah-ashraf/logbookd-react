@@ -2,10 +2,10 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Signin from "./pages/Signin";
-import Check from "./pages/UI/Check";
-import EditProfile from "./pages/UI/EditProfile";
 import "./index.css";
 import Navbar from "./pages/Navbar";
+import Check from "./pages/Check";
+import EditProfile from "./pages/EditProfile";
 
 function App() {
   return (
