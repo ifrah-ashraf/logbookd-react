@@ -5,10 +5,12 @@ import Signin from "./pages/Signin";
 import Check from "./pages/UI/Check";
 import EditProfile from "./pages/UI/EditProfile";
 import "./index.css";
+import Navbar from "./pages/Navbar";
 
 function App() {
   return (
     <Router>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signin" element={<Signin />} />

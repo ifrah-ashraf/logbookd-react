@@ -10,7 +10,9 @@ const config = createConfig(
     transports: {
       // RPC URL for each chain
       [sepolia.id]: http(
-        `https://eth-sepolia.g.alchemy.com/v2/R2dj_w-Y0kbhz2EYAkPIGiGMWv2kKFAf`
+        `https://eth-sepolia.g.alchemy.com/v2/${
+          import.meta.env.VITE_ALCHEMY_KEY
+        }`
       ),
     },
 

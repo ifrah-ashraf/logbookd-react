@@ -1,14 +1,11 @@
 import Content from "./Content";
-import Navbar from "./Navbar";
 
-
-function Home(){
-    return(
-        <>
-        <Navbar/>
-        <Content/>
+function Home() {
+  return (
+    <>
+      <Content />
     </>
-    )
+  );
 }
 
-export default Home ;
+export default Home;
